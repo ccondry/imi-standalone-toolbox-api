@@ -6,31 +6,28 @@ const provisionDb = require('../models/provision-db')
 const imi = require('../models/imi')
 const teamsLogger = require('../models/teams-logger')
 
-// get provision status for current logged-in user from our database
-router.get('/', async function (req, res, next) {
-  try {
-    // check mongo to see if user is provisioned or not
-    const isProvisioned = await provisionDb.isProvisioned(req.user.id)
-    return res.status(200).send({isProvisioned})
-  } catch (e) {
-    // error
-    const message = `failed to get provision status for user ${req.user.username} ${req.user.id}: ${e.message}`
-    console.log(message)
-    teamsLogger.log(message)
-    // return 500 SERVER ERROR
-    return res.status(500).send({message})
-  }
-})
-
 // start user provision for IM Standalone demo
 router.post('/', async function (req, res, next) {
   try {
     // provision in IMI
-    await imi.create(req.user.email)
-    // mark provisioned in mongo
-    await provisionDb.set(req.user.id)
-    // provision complete
-    // return 200 OK with message
+    imi.create(req.user.email)
+    .then(response => {
+      teamsLogger.log(`successfully provision user ${req.user.email} for IMI Standalone`)
+      // mark provision complete in mongo
+      provisionDb.set(req.user.id, 'complete')
+    })
+    .catch(error => {
+      // mark provision error in mongo
+      teamsLogger.error(`failed to provision user ${req.user.email} for IMI Standalone: ${error}`)
+      provisionDb.set(req.user.id, 'error')
+    })
+
+    // mark provision started in mongo
+    provisionDb.set(req.user.id, 'started')
+    teamsLogger.debug(`started provisioning user ${req.user.email} for IMI Standalone...`)
+      
+    // provision requeste complete
+    // return 200 OK
     return res.status(200).send()
   } catch (e) {
     // error

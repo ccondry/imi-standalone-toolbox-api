@@ -29,13 +29,13 @@ function get (id) {
   }
 }
 
-async function set (id) {
+async function set (id, status) {
   try {
     // build provision data query and updates
     const query = {id}
     const updates = {
       $set: {
-        'demo.imi-standalone-v1.provisioned': true
+        'demo.imi-standalone-v1.status': status
       },
       $currentDate: {
         'demo.imi-standalone-v1.lastAccess': { $type: 'date' },

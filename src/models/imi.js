@@ -4,7 +4,7 @@ const id = process.env.IMI_WEBHOOK_ID
 const key = process.env.IMI_WEBHOOK_KEY
 const url = 'https://hooks.imiconnect.io/syncwebhook/' + id
 
-function getOptions (action) {
+function getOptions (action, email) {
   return {
     method: 'POST',
     headers: {
@@ -19,7 +19,7 @@ function getOptions (action) {
 
 // get IMI standalone user
 async function get (email) {
-  const options = getOptions('get')
+  const options = getOptions('get', email)
 
   try {
     const response = await fetch(url, options)
@@ -48,7 +48,7 @@ async function get (email) {
 
 // create IMI standalone user
 async function create (email) {
-  const options = getOptions(email, 'create')
+  const options = getOptions('create', email)
 
   try {
     const response = await fetch(url, options)
