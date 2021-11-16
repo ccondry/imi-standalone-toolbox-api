@@ -53,6 +53,10 @@ async function create (email) {
   try {
     const response = await fetch(url, options)
     console.log('imi standalone provision response:', response)
+    if (response.code === '400' && response.userStatus === 'Invited') {
+      // user already invited
+      return response
+    }
     if (['200', '201'].includes(response.code)) {
       // created user
       return response
