@@ -52,7 +52,12 @@ async function create (email) {
 
   try {
     const response = await fetch(url, options)
-    return response
+    if (['200', '201'].includes(response.code)) {
+      // created user
+      return response
+    } else {
+      throw Error(response.description)
+    }
   } catch (e) {
     throw e
   }
