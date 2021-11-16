@@ -1,0 +1,13 @@
+[Unit]
+Description=dCloud IMI Standalone Toolbox API
+After=network.target
+
+[Service]
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/opt/dcloud/imi-standalone-toolbox-api
+ExecStart=/usr/bin/node src/index
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+# Allow 'administrator' user to restart imi-standalone-toolbox-api service
+administrator ALL=NOPASSWD: /bin/systemctl restart imi-standalone-toolbox-api.service
