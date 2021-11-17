@@ -29,7 +29,7 @@ function get (id) {
   }
 }
 
-async function set (id, status) {
+async function set ({id, status, email}) {
   try {
     // build provision data query and updates
     const query = {id}
@@ -41,6 +41,10 @@ async function set (id, status) {
         'demo.imi-standalone-v1.lastAccess': { $type: 'date' },
         'demo.imi-standalone-v1.modified': { $type: 'date' }
       }
+    }
+    // set email if provided
+    if (email) {
+      updates.$set['demo.imi-standalone-v1.email'] = email
     }
     // update user
     await db.updateOne('toolbox', 'users', query, updates)

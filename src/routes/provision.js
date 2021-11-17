@@ -9,22 +9,27 @@ const teamsLogger = require('../models/teams-logger')
 // start user provision for IM Standalone demo
 router.post('/', async function (req, res, next) {
   try {
+    // append +dcloudimi tag to the user's email address
+    const emailParts = req.user.email.split('@')
+    emailParts[0] += '+dcloudimi'
+    const email = emailParts.join('@')
+    // console.log(email)
     // provision in IMI
-    imi.create(req.user.email)
+    imi.create(email)
     .then(response => {
-      teamsLogger.log(`successfully provision user ${req.user.email} for IMI Standalone`)
+      teamsLogger.log(`successfully provision user ${email} for IMI Standalone`)
       // mark provision complete in mongo
-      provisionDb.set(req.user.id, 'complete')
+      provisionDb.set({id: req.user.id, status: 'complete', email})
     })
     .catch(error => {
       // mark provision error in mongo
-      teamsLogger.error(`failed to provision user ${req.user.email} for IMI Standalone: ${error}`)
-      provisionDb.set(req.user.id, 'error')
+      teamsLogger.error(`failed to provision user ${email} for IMI Standalone: ${error}`)
+      provisionDb.set({id: req.user.id, status: 'error', email})
     })
 
     // mark provision started in mongo
-    provisionDb.set(req.user.id, 'started')
-    teamsLogger.debug(`started provisioning user ${req.user.email} for IMI Standalone...`)
+    provisionDb.set({id: req.user.id, status: 'started', email})
+    teamsLogger.debug(`started provisioning user ${email} for IMI Standalone...`)
       
     // provision requeste complete
     // return 200 OK
