@@ -93,9 +93,9 @@ async function remove (email) {
 function startCollectionsDemo ({
   // customer SMS number
   customerNumber,
-  customerEmail,
-  customerName = 'Michael Littlefoot',
-  customerSalutation = 'Mx',
+  customerEmail = 'null',
+  customerName = '',
+  customerSalutation = '',
   debtAmount = '200',
   currency = '$',
   reminderRequiredStatus = 'Y',
