@@ -97,6 +97,8 @@ const path = 'imi-standalone'
 app.use('/api/v1/' + path + '/provision', require('./routes/provision'))
 // get this software name and version
 app.use('/api/v1/' + path + '/version', require('./routes/version'))
+// join webex support room
+app.use('/api/v1/' + path + '/webex', require('./routes/webex'))
 
 // Node HTTP module options
 const httpOptions = {
