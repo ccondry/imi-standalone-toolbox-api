@@ -4,6 +4,13 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.1.12-1
+
+### Fixes
+* **Webex:** Fix join webex support space route.
+* **Demo:** Update default inputs to match IMI demo site.
+
+
 # 2022.1.12
 
 ### Features

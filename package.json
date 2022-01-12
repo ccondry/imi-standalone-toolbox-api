@@ -1,6 +1,6 @@
 {
   "name": "imi-standalone-toolbox-api",
-  "version": "2022.1.12",
+  "version": "2022.1.12-1",
   "description": "dCloud Cisco Webex IMI Standalone toolbox REST API. Intended to run on the toolbox1 and toolbox2 servers in dCloud shared services.",
   "main": "src/index.js",
   "scripts": {
