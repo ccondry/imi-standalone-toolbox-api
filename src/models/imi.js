@@ -89,8 +89,78 @@ async function remove (email) {
   }
 }
 
+// send SMS to user for the Collections demo
+function startCollectionsDemo ({
+  // customer SMS number
+  customerNumber,
+  customerEmail,
+  customerName = 'Michael Littlefoot',
+  customerSalutation = 'Mx',
+  debtAmount = '200',
+  currency = '$',
+  reminderRequiredStatus = 'Y',
+  channel = 'sms',
+  customerReferenceNumber = '0012E00002AHLDEQA5'
+}) {
+  const url = 'https://hooks-us.imiconnect.io/events/OWPASN4AZS'
+
+  const options = {
+    method: 'POST',
+    body: {
+      customerNumber,
+      customerEmail,
+      customerName,
+      customerSalutation,
+      debtAmount,
+      currency,
+      reminderRequiredStatus,
+      channel,
+      customerReferenceNumber
+    }
+  }
+  console.log('starting collections demo with this data:', options.body)
+  return fetch(url, options)
+}
+
+// send SMS to user for the Appointments demo
+function startAppointmentsDemo ({
+  // customer name
+  name,
+  // customer SMS number
+  number,
+  country = 'US',
+  channel = 'sms'
+}) {
+  // validate input
+  const countries = ['US', 'UK']
+  const channels = ['whatsapp', 'sms']
+  if (!countries.includes(country)) {
+    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+  }
+  if (!channels.includes(channel)) {
+    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+  }
+
+  const url = 'https://hooks-us.imiconnect.io/events/N9WMPI85GE'
+
+  const options = {
+    method: 'POST',
+    body: {
+      name,
+      number,
+      country,
+      channel
+    }
+  }
+
+  // send REST request
+  return fetch(url, options)
+}
+
 module.exports = {
   get,
   create,
-  remove
+  remove,
+  startCollectionsDemo,
+  startAppointmentsDemo
 }

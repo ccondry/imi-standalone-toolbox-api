@@ -99,6 +99,8 @@ app.use('/api/v1/' + path + '/provision', require('./routes/provision'))
 app.use('/api/v1/' + path + '/version', require('./routes/version'))
 // join webex support room
 app.use('/api/v1/' + path + '/webex', require('./routes/webex'))
+// run demo
+app.use('/api/v1/' + path + '/demo', require('./routes/demo'))
 
 // Node HTTP module options
 const httpOptions = {
