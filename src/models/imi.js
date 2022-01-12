@@ -120,7 +120,7 @@ function startCollectionsDemo ({
       country
     }
   }
-  console.log('starting collections demo with this data:', options.body)
+  // console.log('starting collections demo with this data:', options.body)
   return fetch(url, options)
 }
 
