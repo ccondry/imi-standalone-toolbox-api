@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const request = require('request-promise-native')
+const fetch = require('../models/fetch')
 // blocked domain names for webex teams usernames
 const blockedDomains = [
   'gmail.com',
@@ -39,18 +39,18 @@ router.post('/', async (req, res, next) => {
   const email = req.query.email
   try {
     console.log('request to add user to the Webex Teams support room for', email)
-    const response = await request({
-      url: 'https://api.ciscospark.com/v1/memberships',
+    const response = await fetch('https://api.ciscospark.com/v1/memberships', {
       method: 'POST',
-      headers: {
-        Authorization: 'Bearer ' + process.env.WEBEX_BOT_TOKEN
-      },
-      body: {
-        roomId: process.env.SUPPORT_ROOM_ID,
-        personEmail: email,
-        isModerator: false
-      },
-      json: true
+      options: {
+        headers: {
+          Authorization: 'Bearer ' + process.env.WEBEX_BOT_TOKEN
+        },
+        body: {
+          roomId: process.env.SUPPORT_ROOM_ID,
+          personEmail: email,
+          isModerator: false
+        }
+      }
     })
     // return 202 ACCEPTED
     return res.status(202).send()
