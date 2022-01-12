@@ -100,7 +100,8 @@ function startCollectionsDemo ({
   currency = '$',
   reminderRequiredStatus = 'Y',
   channel = 'sms',
-  customerReferenceNumber = '0012E00002AHLDEQA5'
+  customerReferenceNumber = '0012E00002AHLDEQA5',
+  country = 'US'
 }) {
   const url = 'https://hooks-us.imiconnect.io/events/OWPASN4AZS'
 
@@ -115,7 +116,8 @@ function startCollectionsDemo ({
       currency,
       reminderRequiredStatus,
       channel,
-      customerReferenceNumber
+      customerReferenceNumber,
+      country
     }
   }
   console.log('starting collections demo with this data:', options.body)
