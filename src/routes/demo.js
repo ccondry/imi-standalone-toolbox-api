@@ -19,15 +19,15 @@ router.post('/collections', async function (req, res, next) {
   }
 })
 
-// start appointments demo
-router.post('/appointments', async function (req, res, next) {
+// start appointment demo
+router.post('/appointment', async function (req, res, next) {
   try {
-    await imi.startAppointmentsDemo(req.body)
+    await imi.startAppointmentDemo(req.body)
     // return 200 OK
     return res.status(200).send({})
   } catch (e) {
     // error
-    const message = `failed to send SMS to start the appointments demo for ${req.user.email}: ${e.message}`
+    const message = `failed to send SMS to start the appointment demo for ${req.user.email}: ${e.message}`
     console.log(message)
     teamsLogger.log(message)
     // return 500 SERVER ERROR

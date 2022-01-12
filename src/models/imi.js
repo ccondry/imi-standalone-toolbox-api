@@ -124,8 +124,8 @@ function startCollectionsDemo ({
   return fetch(url, options)
 }
 
-// send SMS to user for the Appointments demo
-function startAppointmentsDemo ({
+// send SMS to user for the Appointment demo
+function startAppointmentDemo ({
   // customer name
   name,
   // customer SMS number
@@ -164,5 +164,5 @@ module.exports = {
   create,
   remove,
   startCollectionsDemo,
-  startAppointmentsDemo
+  startAppointmentDemo
 }
