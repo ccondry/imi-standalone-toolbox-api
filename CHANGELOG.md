@@ -4,6 +4,14 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.3.29-3
+
+### Fixes
+* **Provision:** Fix provision error message data format. Mark user as provision
+complete if the error returned is "User Active" (because they are already
+provisioned with that email address).
+
+
 # 2022.3.29-2
 
 ### Fixes
