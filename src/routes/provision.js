@@ -9,12 +9,8 @@ const teamsLogger = require('../models/teams-logger')
 // start user provision for IM Standalone demo
 router.post('/', async function (req, res, next) {
   try {
-    // append +dcloudimi tag to the user's email address
-    const emailParts = req.user.email.split('@')
-    emailParts[0] += '+dcloudimi'
-    const email = emailParts.join('@')
-    // console.log(email)
     // provision in IMI
+    const email = req.body.email
     imi.create(email)
     .then(response => {
       teamsLogger.log(`successfully provision user ${email} for IMI Standalone`)
