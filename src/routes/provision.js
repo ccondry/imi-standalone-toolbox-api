@@ -20,7 +20,7 @@ router.post('/', async function (req, res, next) {
     .catch(error => {
       // mark provision error in mongo
       teamsLogger.error(`failed to provision user ${email} for IMI Standalone: ${error}`)
-      provisionDb.set({id: req.user.id, status: 'error', email, error})
+      provisionDb.set({id: req.user.id, status: 'error', email, error: error.message})
     })
 
     // mark provision started in mongo
