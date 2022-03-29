@@ -18,9 +18,14 @@ router.post('/', async function (req, res, next) {
       provisionDb.set({id: req.user.id, status: 'complete', email})
     })
     .catch(error => {
-      // mark provision error in mongo
-      teamsLogger.error(`failed to provision user ${email} for IMI Standalone: ${error}`)
-      provisionDb.set({id: req.user.id, status: 'error', email, error: error.message})
+      if (error.message === 'User Active') {
+        // ignore 'user active' message and mark as complete
+        provisionDb.set({id: req.user.id, status: 'complete', email})
+      } else {
+        // mark provision error in mongo
+        teamsLogger.error(`failed to provision user ${email} for IMI Standalone: ${error}`)
+        provisionDb.set({id: req.user.id, status: 'error', email, error: error.message})
+      }
     })
 
     // mark provision started in mongo
