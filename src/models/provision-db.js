@@ -46,10 +46,8 @@ async function set ({id, status, email, error}) {
     if (email) {
       updates.$set['demo.imi-standalone-v1.email'] = email
     }
-    // set error if provided
-    if (error) {
-      updates.$set['demo.imi-standalone-v1.error'] = error
-    }
+    // set error if provided, or delete it if not provided
+    updates.$set['demo.imi-standalone-v1.error'] = error
     // update user
     await db.updateOne('toolbox', 'users', query, updates)
   } catch (e) {
