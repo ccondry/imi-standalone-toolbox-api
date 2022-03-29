@@ -4,6 +4,13 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.3.29
+
+### Features
+* **Provision:** Provision user using their provided email instead of using
+an alias generated from their email address.
+
+
 # 2022.1.12-1
 
 ### Fixes
