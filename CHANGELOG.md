@@ -4,6 +4,13 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.4.5
+
+### Features
+* **Demo:** Add route to start the v2 appointments demo on SMS, Whatsapp,
+Apple Message for Business, and Google RCS.
+
+
 # 2022.3.29-3
 
 ### Fixes
