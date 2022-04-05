@@ -159,10 +159,46 @@ function startAppointmentDemo ({
   return fetch(url, options)
 }
 
+// send SMS/whatsapp/apple chat/google chat to user for the Appointment demo in v2
+function startAppointmentV2Demo ({
+  // customer name
+  name,
+  // customer SMS number
+  number,
+  country = 'US',
+  channel = 'sms'
+}) {
+  // validate input
+  const countries = ['US', 'UK']
+  const channels = ['whatsapp', 'sms', 'amb', 'rcs']
+  if (!countries.includes(country)) {
+    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+  }
+  if (!channels.includes(channel)) {
+    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+  }
+
+  const url = 'https://hooks-us.imiconnect.io/events/4OQB0NNGSG'
+
+  const options = {
+    method: 'POST',
+    body: {
+      name,
+      number,
+      country,
+      channel
+    }
+  }
+
+  // send REST request
+  return fetch(url, options)
+}
+
 module.exports = {
   get,
   create,
   remove,
   startCollectionsDemo,
-  startAppointmentDemo
+  startAppointmentDemo,
+  startAppointmentV2Demo
 }
