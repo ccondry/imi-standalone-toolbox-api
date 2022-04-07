@@ -124,6 +124,51 @@ function startCollectionsDemo ({
   return fetch(url, options)
 }
 
+// send SMS to user for the Collections v2 demo
+function startCollectionsV2Demo ({
+  // customer SMS number
+  customerNumber,
+  customerEmail = 'null',
+  customerName = '',
+  customerSalutation = '',
+  debtAmount = '200',
+  currency = 'USD',
+  reminderRequiredStatus = 'Y',
+  channel = 'sms',
+  customerReferenceNumber = '0012E00002AHLDEQA5',
+  country = 'US'
+}) {
+  // validate input
+  const countries = ['US', 'UK']
+  const channels = ['whatsapp', 'sms', 'rcs']
+  if (!countries.includes(country)) {
+    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+  }
+  if (!channels.includes(channel)) {
+    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+  }
+
+  const url = 'https://hooks-us.imiconnect.io/events/31JTUI09O3'
+
+  const options = {
+    method: 'POST',
+    body: {
+      customerNumber,
+      customerEmail,
+      customerName,
+      customerSalutation,
+      debtAmount,
+      currency,
+      reminderRequiredStatus,
+      channel,
+      customerReferenceNumber,
+      country
+    }
+  }
+  // console.log('starting collections demo with this data:', options.body)
+  return fetch(url, options)
+}
+
 // send SMS to user for the Appointment demo
 function startAppointmentDemo ({
   // customer name
@@ -199,6 +244,7 @@ module.exports = {
   create,
   remove,
   startCollectionsDemo,
+  startCollectionsV2Demo,
   startAppointmentDemo,
   startAppointmentV2Demo
 }
