@@ -4,6 +4,12 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.5.3
+
+### Features
+* **Demo:** Add route to start the v2 retail journey demo on Google RCS.
+
+
 # 2022.4.7
 
 ### Features
