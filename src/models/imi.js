@@ -239,6 +239,36 @@ function startAppointmentV2Demo ({
   return fetch(url, options)
 }
 
+// send RCS chat to user for the Retail Journey demo in v2
+function startRetailJourneyV2Demo ({
+  // customer name
+  name,
+  // customer SMS number
+  number,
+  channel = 'rcs'
+}) {
+  // validate input
+  const channels = ['rcs']
+  if (!channels.includes(channel)) {
+    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+  }
+
+  const url = 'https://hooks-us.imiconnect.io/events/1TGEYVH0YG'
+
+  const options = {
+    method: 'POST',
+    body: {
+      name,
+      number,
+      country,
+      channel
+    }
+  }
+
+  // send REST request
+  return fetch(url, options)
+}
+
 module.exports = {
   get,
   create,
@@ -246,5 +276,6 @@ module.exports = {
   startCollectionsDemo,
   startCollectionsV2Demo,
   startAppointmentDemo,
-  startAppointmentV2Demo
+  startAppointmentV2Demo,
+  startRetailJourneyV2Demo
 }
