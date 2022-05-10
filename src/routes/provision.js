@@ -23,7 +23,13 @@ router.post('/', async function (req, res, next) {
         provisionDb.set({id: req.user.id, status: 'complete', email})
       } else {
         // mark provision error in mongo
-        teamsLogger.error(`failed to provision user ${email} for IMI Standalone: ${error}`)
+        teamsLogger.error({
+          text: `failed to provision user ${email} for IMI Standalone: ${error}`,
+          mention: {
+            email: 'mgianni@cisco.com',
+            name: 'Mario'
+          }
+        })
         provisionDb.set({id: req.user.id, status: 'error', email, error: error.message})
       }
     })

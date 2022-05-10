@@ -26,6 +26,7 @@ async function log () {
   // console.log('teamslogger', Object.keys(arguments).length)
   let text = ''
   let markdown = ''
+  let mentions = []
 
   if (Object.keys(arguments).length === 0) {
     // no arguments
@@ -44,6 +45,23 @@ async function log () {
       // trim markdown, if exists
       if (args.markdown) {
         markdown += trimMessage(args.markdown) + ' '
+      }
+      // any mentions?
+      if (args.mention) {
+        // make sure mentions is an array
+        if (typeof args.mention === 'string' && args.mention.length) {
+          // use mention string as the email and name
+          mentions = [{email: args.mention, name: args.mention}]
+        } else if (typeof args.mention === 'object') {
+          // use mention object as single element in an array
+          mentions = [args.mention]
+        } else if (Array.isArray(args.mention)) {
+          // copy mention arg array
+          mentions = args.mention
+        }
+
+        // map mentions to array of webex markdown strings
+        mentions = mentions.map(m => `<@personEmail:${m.email}|${m.name}>`)
       }
     }
   }
@@ -71,8 +89,16 @@ async function log () {
   const markdownPrefix = `**${packageName} ${packageVersion}** on **${hostname}**: `
   // add prefix to plaintext
   text = textPrefix + text
-  // add prefix to markdown
-  markdown = markdownPrefix + markdown
+  
+  // any mentions?
+  if (mentions.length) {
+    // add prefix and mentions to markdown
+    const allMentions = mentions.join(' ') + ' '
+    markdown = `${markdownPrefix}${allMentions}${markdown}`
+  } else {
+    // add prefix to markdown
+    markdown = `${markdownPrefix}${markdown}`
+  }
   
   // get log token and room ID from globals
   const token = await globals.getAsync('toolbotToken')
