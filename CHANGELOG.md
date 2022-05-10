@@ -4,6 +4,13 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.5.10
+
+### Fixes
+* **Provision:** Don't log when provision is starting and has succeeded, and
+when provision fails mention Mario.
+
+
 # 2022.5.3
 
 ### Features
