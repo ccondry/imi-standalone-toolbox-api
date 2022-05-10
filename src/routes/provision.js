@@ -13,7 +13,7 @@ router.post('/', async function (req, res, next) {
     const email = req.body.email
     imi.create(email)
     .then(response => {
-      teamsLogger.log(`successfully provision user ${email} for IMI Standalone`)
+      // teamsLogger.log(`successfully provision user ${email} for IMI Standalone`)
       // mark provision complete in mongo
       provisionDb.set({id: req.user.id, status: 'complete', email})
     })
@@ -30,7 +30,7 @@ router.post('/', async function (req, res, next) {
 
     // mark provision started in mongo
     provisionDb.set({id: req.user.id, status: 'started', email})
-    teamsLogger.debug(`started provisioning user ${email} for IMI Standalone...`)
+    // teamsLogger.debug(`started provisioning user ${email} for IMI Standalone...`)
       
     // provision requeste complete
     // return 200 OK
