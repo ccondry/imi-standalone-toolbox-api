@@ -264,8 +264,8 @@ function startRetailJourneyV2Demo ({
   const options = {
     method: 'POST',
     body: {
-      name,
-      number,
+      customerName: name,
+      mobileNumber: number,
       country,
       channel
     }
