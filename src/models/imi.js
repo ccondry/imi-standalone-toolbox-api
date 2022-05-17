@@ -245,10 +245,16 @@ function startRetailJourneyV2Demo ({
   name,
   // customer SMS number
   number,
-  channel = 'rcs'
+  channel = 'rcs',
+  country = 'US'
 }) {
   // validate input
+  // validate input
+  const countries = ['US', 'UK']
   const channels = ['rcs']
+  if (!countries.includes(country)) {
+    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+  }
   if (!channels.includes(channel)) {
     throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
   }
