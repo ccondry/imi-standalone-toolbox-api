@@ -4,6 +4,12 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.5.17
+
+### Fixes
+* **Demo:** Add missing country parameter for Retail Journey v2 demo
+
+
 # 2022.5.10
 
 ### Fixes
