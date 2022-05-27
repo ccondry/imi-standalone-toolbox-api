@@ -4,6 +4,7 @@ const fetch = require('./fetch')
 const globals = require('./globals')
 // find env hostname
 const hostname = os.hostname()
+const datacenter = process.env.DATACENTER || 'unknown'
 
 // trim message to 7439 bytes for Webex to accept it
 function trimMessage (message) {
@@ -85,8 +86,8 @@ async function log () {
   const packageName = package.name
   // const packageVersion = process.env.npm_package_version
   const packageVersion = package.version
-  const textPrefix = `${packageName} ${packageVersion} on ${hostname}: `
-  const markdownPrefix = `**${packageName} ${packageVersion}** on **${hostname}**: `
+  const textPrefix = `${packageName} ${packageVersion} on ${hostname} in ${datacenter}: `
+  const markdownPrefix = `**${packageName} ${packageVersion}** on **${hostname}** in **${datacenter}**: `
   // add prefix to plaintext
   text = textPrefix + text
   
