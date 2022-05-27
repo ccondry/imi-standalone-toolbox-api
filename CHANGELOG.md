@@ -4,6 +4,17 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.5.27
+
+### Features
+* **Demo:** Update retail journey v2 body key names to customerName and
+mobileNumber.
+
+
+### Features
+* **Logging:** Add datacenter to log messages in Webex.
+
+
 # 2022.5.17
 
 ### Fixes
