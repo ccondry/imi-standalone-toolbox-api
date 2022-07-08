@@ -4,6 +4,12 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.7.8
+
+### Features
+* **Demo:** Add route for Product Activation v3 demo.
+
+
 # 2022.5.27
 
 ### Features
