@@ -83,4 +83,20 @@ router.post('/retail-journey/v2', async function (req, res, next) {
   }
 })
 
+// start product activation v3 demo
+router.post('/product/v3', async function (req, res, next) {
+  try {
+    await imi.startProductActivationV3Demo(req.body)
+    // return 200 OK
+    return res.status(200).send({})
+  } catch (e) {
+    // error
+    const message = `failed to send SMS to start the product activation v3 demo for ${req.user.email}: ${e.message}`
+    console.log(message)
+    teamsLogger.log(message)
+    // return 500 SERVER ERROR
+    return res.status(500).send({message})
+  }
+})
+
 module.exports = router

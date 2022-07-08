@@ -275,6 +275,42 @@ function startRetailJourneyV2Demo ({
   return fetch(url, options)
 }
 
+// send SMS or RCS chat to user for the Product Activation demo in v3
+function startProductActivationV3Demo ({
+  // customer name
+  name,
+  // customer SMS number
+  number,
+  // default channel SMS
+  channel = 'sms'
+  // default country US
+  // country = 'US'
+}) {
+  // validate input
+  // const countries = ['US', 'UK', 'SNG']
+  const channels = ['rcs']
+  if (!channels.includes(channel)) {
+    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+  }
+  // if (channel === 'sms' && !countries.includes(country)) {
+  //   throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+  // }
+
+  const url = 'https://hooks-us.imiconnect.io/events/K9ZOFZMSN0'
+
+  const options = {
+    method: 'POST',
+    body: {
+      customerName: name,
+      mobileNumber: number,
+      channel
+    }
+  }
+
+  // send REST request
+  return fetch(url, options)
+}
+
 module.exports = {
   get,
   create,
@@ -283,5 +319,6 @@ module.exports = {
   startCollectionsV2Demo,
   startAppointmentDemo,
   startAppointmentV2Demo,
-  startRetailJourneyV2Demo
+  startRetailJourneyV2Demo,
+  startProductActivationV3Demo
 }
