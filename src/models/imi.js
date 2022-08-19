@@ -142,10 +142,10 @@ function startCollectionsV2Demo ({
   const countries = ['US', 'UK']
   const channels = ['whatsapp', 'sms', 'rcs']
   if (!countries.includes(country)) {
-    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+    throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
   }
   if (!channels.includes(channel)) {
-    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+    throw Error(`The value for 'channel' must be one of these values: ${channels.join(', ')}`)
   }
 
   const url = 'https://hooks-us.imiconnect.io/events/31JTUI09O3'
@@ -182,10 +182,10 @@ function startAppointmentDemo ({
   const countries = ['US', 'UK']
   const channels = ['whatsapp', 'sms']
   if (!countries.includes(country)) {
-    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+    throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
   }
   if (!channels.includes(channel)) {
-    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+    throw Error(`The value for 'channel' must be one of these values: ${channels.join(', ')}`)
   }
 
   const url = 'https://hooks-us.imiconnect.io/events/N9WMPI85GE'
@@ -217,10 +217,10 @@ function startAppointmentV2Demo ({
   const countries = ['US', 'UK']
   const channels = ['whatsapp', 'sms', 'amb', 'rcs']
   if (!countries.includes(country)) {
-    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+    throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
   }
   if (!channels.includes(channel)) {
-    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+    throw Error(`The value for 'channel' must be one of these values: ${channels.join(', ')}`)
   }
 
   const url = 'https://hooks-us.imiconnect.io/events/4OQB0NNGSG'
@@ -253,10 +253,10 @@ function startRetailJourneyV2Demo ({
   const countries = ['US', 'UK']
   const channels = ['rcs']
   if (!countries.includes(country)) {
-    throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+    throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
   }
   if (!channels.includes(channel)) {
-    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+    throw Error(`The value for 'channel' must be one of these values: ${channels.join(', ')}`)
   }
 
   const url = 'https://hooks-us.imiconnect.io/events/1TGEYVH0YG'
@@ -290,10 +290,10 @@ function startProductActivationV3Demo ({
   // const countries = ['US', 'UK', 'SNG']
   const channels = ['rcs']
   if (!channels.includes(channel)) {
-    throw Error(`The value for 'channel' must be one of these values: ${channels.split(', ')}`)
+    throw Error(`The value for 'channel' must be one of these values: ${channels.join(', ')}`)
   }
   // if (channel === 'sms' && !countries.includes(country)) {
-  //   throw Error(`The value for 'country' must be one of these values: ${countries.split(', ')}`)
+  //   throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
   // }
 
   const url = 'https://hooks-us.imiconnect.io/events/K9ZOFZMSN0'
