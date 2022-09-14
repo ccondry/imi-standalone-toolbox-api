@@ -4,6 +4,13 @@ Version numbers are semver-compatible dates in YYYY.MM.DD-X format,
 where X is the revision number
 
 
+# 2022.9.14
+
+### Features
+* **Demo:** Fix error messages when country or channel selected is not a valid
+one. Allow country SNG to be used for requests.
+
+
 # 2022.7.8
 
 ### Features
