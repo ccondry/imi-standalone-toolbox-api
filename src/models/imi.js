@@ -139,7 +139,7 @@ function startCollectionsV2Demo ({
   country = 'US'
 }) {
   // validate input
-  const countries = ['US', 'UK']
+  const countries = ['US', 'UK', 'SNG']
   const channels = ['whatsapp', 'sms', 'rcs']
   if (!countries.includes(country)) {
     throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
@@ -179,7 +179,7 @@ function startAppointmentDemo ({
   channel = 'sms'
 }) {
   // validate input
-  const countries = ['US', 'UK']
+  const countries = ['US', 'UK', 'SNG']
   const channels = ['whatsapp', 'sms']
   if (!countries.includes(country)) {
     throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
@@ -214,7 +214,7 @@ function startAppointmentV2Demo ({
   channel = 'sms'
 }) {
   // validate input
-  const countries = ['US', 'UK']
+  const countries = ['US', 'UK', 'SNG']
   const channels = ['whatsapp', 'sms', 'amb', 'rcs']
   if (!countries.includes(country)) {
     throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
@@ -250,7 +250,7 @@ function startRetailJourneyV2Demo ({
 }) {
   // validate input
   // validate input
-  const countries = ['US', 'UK']
+  const countries = ['US', 'UK', 'SNG']
   const channels = ['rcs']
   if (!countries.includes(country)) {
     throw Error(`The value for 'country' must be one of these values: ${countries.join(', ')}`)
